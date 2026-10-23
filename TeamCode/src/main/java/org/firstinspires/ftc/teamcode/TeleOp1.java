@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "PepRally2.java")
-public class PepRally2 extends LinearOpMode {
+public class TeleOp1 extends LinearOpMode {
 
     private DcMotor motor01launcher;
     private DcMotor motor04launcher;

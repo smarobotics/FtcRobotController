@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import java.util.List;
 
 @Autonomous(name = "oldAuto")
-public class Auto1 extends LinearOpMode {
+public class oldAuto extends LinearOpMode {
 
     private DcMotor motor01launcher;
     private DcMotor motor02leftwheel;
