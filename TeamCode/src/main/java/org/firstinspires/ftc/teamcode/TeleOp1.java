@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name = "PepRally1.java")
-public class PepRally1 extends LinearOpMode {
+@TeleOp(name = "PepRally2.java")
+public class PepRally2 extends LinearOpMode {
 
     private DcMotor motor01launcher;
     private DcMotor motor04launcher;
@@ -17,10 +17,10 @@ public class PepRally1 extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        motor01launcher = hardwareMap.get(DcMotor.class, "motor01 -launcher");
-        motor04launcher = hardwareMap.get(DcMotor.class, "motor04 -launcher");
-        motor02leftwheel = hardwareMap.get(DcMotor.class, "motor02 -left wheel");
-        motor03rightwheel = hardwareMap.get(DcMotor.class, "motor03 -right wheel");
+        motor01launcher = hardwareMap.get(DcMotor.class, "motor00");
+        motor04launcher = hardwareMap.get(DcMotor.class, "motor03");
+        motor02leftwheel = hardwareMap.get(DcMotor.class, "motor01");
+        motor03rightwheel = hardwareMap.get(DcMotor.class, "motor02");
         servo0 = hardwareMap.get(Servo.class, "servo 0");
         waitForStart();
         while (opModeIsActive()) {
@@ -33,20 +33,22 @@ public class PepRally1 extends LinearOpMode {
             motor02leftwheel.setPower(gamepad1.right_stick_x);
             motor03rightwheel.setPower(gamepad1.left_stick_x);
             //
-            motor04launcher.setPower(gamepad1.left_trigger);
+            if (gamepad1.left_trigger > 0) {
+                motor01launcher.setDirection(DcMotor.Direction.FORWARD);
+                motor01launcher.setPower(gamepad1.left_trigger);
+            }
+            // motor01launcher.setPower(gamepad1.left_trigger);
             motor01launcher.setPower(gamepad1.right_trigger);
             if (gamepad1.dpad_up) {
                 servo0.setPosition(0);
             }
             if (gamepad1.dpad_down) {
-                servo0.setPosition(45);
+                servo0.setPosition(90);
             }
             if (gamepad1.dpad_left) {
-                servo0.setPosition(10);
+                servo0.setPosition(270);
             }
-            if (gamepad1.dpad_right) {
-                servo0.setPosition(-90);
-            }
+
         }
 
     }
