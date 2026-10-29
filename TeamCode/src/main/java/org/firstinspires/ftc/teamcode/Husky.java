@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.dfrobot.HuskyLens;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcore.internal.system.Deadline;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +13,7 @@ public class Husky extends LinearOpMode {
     // Define the rate limit for reading data to keep telemetry from lagging
     private final int READ_PERIOD = 1;
     private HuskyLens huskyLens;
+private DcMotor motor0;
 
     @Override
     public void runOpMode() {
@@ -32,7 +34,7 @@ public class Husky extends LinearOpMode {
          * HuskyLens.Algorithm.TAG_RECOGNITION
          * HuskyLens.Algorithm.OBJECT_RECOGNITION
          */
-        huskyLens.selectAlgorithm(HuskyLens.Algorithm.COLOR_RECOGNITION);
+        huskyLens.selectAlgorithm(HuskyLens.Algorithm.TAG_RECOGNITION);
 
         telemetry.addData("Status", "Initialized. HuskyLens ready.");
         telemetry.update();

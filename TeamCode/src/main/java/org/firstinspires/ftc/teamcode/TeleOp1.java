@@ -6,13 +6,14 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name = "PepRally2.java")
+@TeleOp(name = "TeleOp1.java")
 public class TeleOp1 extends LinearOpMode {
 
     private DcMotor motor01launcher;
     private DcMotor motor04launcher;
     private DcMotor motor02leftwheel;
     private DcMotor motor03rightwheel;
+    private DcMotor motor05rand;
     private Servo servo0;
 
     @Override
@@ -21,6 +22,7 @@ public class TeleOp1 extends LinearOpMode {
         motor04launcher = hardwareMap.get(DcMotor.class, "motor03");
         motor02leftwheel = hardwareMap.get(DcMotor.class, "motor01");
         motor03rightwheel = hardwareMap.get(DcMotor.class, "motor02");
+        motor05rand = hardwareMap.get(DcMotor.class, "motor05");
         servo0 = hardwareMap.get(Servo.class, "servo 0");
         waitForStart();
         while (opModeIsActive()) {
@@ -41,12 +43,6 @@ public class TeleOp1 extends LinearOpMode {
             motor01launcher.setPower(gamepad1.right_trigger);
             if (gamepad1.dpad_up) {
                 servo0.setPosition(0);
-            }
-            if (gamepad1.dpad_down) {
-                servo0.setPosition(90);
-            }
-            if (gamepad1.dpad_left) {
-                servo0.setPosition(270);
             }
 
         }
